@@ -11,7 +11,7 @@ var calories = 0
 var top3Calories = 0
 
 func main() {
-	inputBytes, err := os.ReadFile("input.txt")
+	inputBytes, err := os.ReadFile("../input.txt")
 
 	if err != nil {
 		return
