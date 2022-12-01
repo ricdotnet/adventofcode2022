@@ -2,13 +2,13 @@ package main
 
 import (
 	"os"
+	"sort"
 	"strconv"
 	"strings"
 )
 
-var totalFood = 0
-var top3Total = 0
-var top3 [3]int
+var calories = 0
+var top3Calories = 0
 
 func main() {
 	inputBytes, err := os.ReadFile("input.txt")
@@ -19,27 +19,20 @@ func main() {
 
 	inputText := string(inputBytes)
 	processInput(inputText)
-	println("most food:", totalFood)
-	println("top3 total:", top3Total)
+	println("most calories:", calories)
+	println("top3 calories:", top3Calories)
 }
 
 func processInput(i string) {
 	lines := strings.Split(i, "\n")
 
+	var elfs string
 	elfTotal := 0
-	for _, line := range lines {
-		if line == "" {
-			for i, v := range top3 {
-				if elfTotal > v {
-					if i+1 < len(top3) {
-						top3[i+1] = v
-					}
-					top3[i] = elfTotal
-					break
-				}
-			}
-			if elfTotal > totalFood {
-				totalFood = elfTotal
+	for i, line := range lines {
+		if line == "" || i == len(lines)-1 {
+			elfs += strconv.Itoa(elfTotal) + "\n"
+			if elfTotal > calories {
+				calories = elfTotal
 			}
 			elfTotal = 0
 		}
@@ -49,7 +42,16 @@ func processInput(i string) {
 		}
 	}
 
-	for _, v := range top3 {
-		top3Total += v
+	processTop3(elfs)
+}
+
+func processTop3(e string) {
+	elfsParts := strings.Split(e, "\n")
+	sort.Slice(elfsParts, func(i, j int) bool {
+		return elfsParts[i] > elfsParts[j]
+	})
+	for i := 0; i < 3; i++ {
+		c, _ := strconv.Atoi(elfsParts[i])
+		top3Calories += c
 	}
 }
