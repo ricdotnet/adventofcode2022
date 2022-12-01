@@ -26,26 +26,26 @@ func main() {
 func processInput(i string) {
 	lines := strings.Split(i, "\n")
 
-	elveTotal := 0
+	elfTotal := 0
 	for _, line := range lines {
 		if line == "" {
 			for i, v := range top3 {
-				if elveTotal > v {
+				if elfTotal > v {
 					if i+1 < len(top3) {
 						top3[i+1] = v
 					}
-					top3[i] = elveTotal
+					top3[i] = elfTotal
 					break
 				}
 			}
-			if elveTotal > totalFood {
-				totalFood = elveTotal
+			if elfTotal > totalFood {
+				totalFood = elfTotal
 			}
-			elveTotal = 0
+			elfTotal = 0
 		}
 		total, err := strconv.Atoi(line)
 		if err == nil {
-			elveTotal += total
+			elfTotal += total
 		}
 	}
 
