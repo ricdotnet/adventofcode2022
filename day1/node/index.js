@@ -1,9 +1,9 @@
 const fs = require('fs/promises');
 
 (async () => {
-  const lines = await (await fs.readFile('../input.txt')).toString().split(/\n\s*\n/);
+  const lines = await fs.readFile('../input.txt');
 
-  const totals = lines.map(line => {
+  const totals = lines.toString().split(/\n\s*\n/).map(line => {
     return line.split('\n').reduce((p, c) => p += +c, 0);
   }).sort((a, b) => b - a);
 
