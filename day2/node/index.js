@@ -17,5 +17,5 @@ fs.readFile('../inputs.txt', (error, data) => {
   data.toString().split('\n').map(l => {
     total += maps[l];
   });
-  console.log(total);
+  console.log('total points:', total);
 });
