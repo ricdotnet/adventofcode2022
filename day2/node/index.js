@@ -13,7 +13,7 @@ const maps = {
 }
 
 let total = 0;
-fs.readFile('../inputs.txt', (error, data) => {
+fs.readFile('../inputs.txt', (_, data) => {
   data.toString().split('\n').map(l => {
     total += maps[l];
   });
