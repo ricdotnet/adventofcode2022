@@ -14,17 +14,15 @@ fs.readFile('../inputs.txt', (_, data) => {
 
 function solve(lines) {
   lines.map(line => {
-    const lp = line.split(',');
-    const left = lp[0].split('-');
-    const right = lp[1].split('-');
+    const [left, right] = line.split(',').map(s => s.split('-').map(x => +x));
 
-    if ((+left[0] >= +right[0] && +left[1] <= +right[1]) ||
-        (+right[0] >= +left[0] && +right[1] <= +left[1])) {
+    if (left[0] >= right[0] && left[1] <= right[1] ||
+        right[0] >= left[0] && right[1] <= left[1]) {
       totalF += 1;
     }
 
-    if ((+left[0] >= +right[0] && +left[0] <= right[1]) ||
-        (+right[0] >= +left[0] && +right[0] <= left[1])) {
+    if (left[0] >= right[0] && left[0] <= right[1] ||
+        right[0] >= left[0] && right[0] <= left[1]) {
       totalS += 1;
     }
   });
