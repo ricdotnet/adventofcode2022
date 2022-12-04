@@ -19,14 +19,12 @@ function solve(lines) {
     const right = lp[1].split('-');
 
     if ((+left[0] >= +right[0] && +left[1] <= +right[1]) ||
-        (+right[0] >= +left[0] && +right[1] <= +left[1])
-    ){
+        (+right[0] >= +left[0] && +right[1] <= +left[1])) {
       totalF += 1;
     }
 
     if ((+left[0] >= +right[0] && +left[0] <= right[1]) ||
-        (+right[0] >= +left[0] && +right[0] <= left[1])
-    ) {
+        (+right[0] >= +left[0] && +right[0] <= left[1])) {
       totalS += 1;
     }
   });
