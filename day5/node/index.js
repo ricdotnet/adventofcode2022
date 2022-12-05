@@ -21,7 +21,5 @@ steps.map(x => {
   groups2[n[2] - 1].push(...p2);
 });
 
-groups.map(x => final[0].push(x[x.length - 1]));
-console.log(final[0].join(''));
-groups2.map(x => final[1].push(x[x.length - 1]));
-console.log(final[1].join(''));
+console.log(groups.map(x => x[x.length - 1]).join(''));
+console.log(groups2.map(x => x[x.length - 1]).join(''));
