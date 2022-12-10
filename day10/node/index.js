@@ -46,14 +46,14 @@ class Sprite {
   }
 }
 
-const crtScreen = Array(6).fill([]).map(_ => Array(40).fill('.'));
+const crtScreen = Array(6).fill([]).map(_ => Array(40));
 let crtPixel = 0;
 let crtLine = 0;
 const sprite = new Sprite(0);
 function drawCRT() {
-  if (sprite.intercepts()) {
-    crtScreen[crtLine][crtPixel] = '#';
-  }
+  sprite.intercepts()
+    ? crtScreen[crtLine][crtPixel] = '#'
+    : crtScreen[crtLine][crtPixel] = ' ';
   crtPixel += 1;
   if (cycle % 40 === 0) {
     crtLine += 1;
